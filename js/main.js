@@ -258,23 +258,27 @@ window.downloadPiece = function(filePath, fileName) {
 };
 
 // Modal de visualização
+// Modal apenas para imagens (sem vídeo)
 window.openModal = function(filePath, isVideo) {
+    // Se for vídeo, apenas faz download em vez de abrir modal
+    if (isVideo) {
+        // Extrair nome do arquivo para download
+        const fileName = filePath.split('/').pop();
+        downloadPiece(filePath, fileName);
+        showToast(`🎬 Vídeo não pode ser pré-visualizado. Download iniciado: ${fileName}`);
+        return;
+    }
+    
+    // Para imagens, abre o modal normalmente
     const modal = document.getElementById('modal');
     const modalContent = modal.querySelector('.modal-content');
     
-    if (isVideo) {
-        modalContent.innerHTML = `
-            <button class="close-modal" onclick="closeModal()">×</button>
-            <video controls autoplay style="max-width: 100%; max-height: 90vh;">
-                <source src="${filePath}" type="video/mp4">
-            </video>
-        `;
-    } else {
-        modalContent.innerHTML = `
-            <button class="close-modal" onclick="closeModal()">×</button>
-            <img src="${filePath}" alt="Visualização" style="max-width: 100%; max-height: 90vh;">
-        `;
-    }
+    modalContent.innerHTML = `
+        <button class="close-modal" onclick="closeModal()">×</button>
+        <img src="${filePath}" alt="Visualização" 
+             style="max-width: 100%; max-height: 90vh; display: block; margin: 0 auto;"
+             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23f0f0f0\'/%3E%3Ctext x=\'50%%\' y=\'50%%\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3EErro ao carregar imagem%3C/text%3E%3C/svg%3E'">
+    `;
     
     modal.classList.add('active');
 };
