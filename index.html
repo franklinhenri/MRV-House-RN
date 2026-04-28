@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositório de Peças Publicitárias</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📁 Repositório de Peças Publicitárias</h1>
+            <p>Selecione o ano e mês para visualizar e baixar as artes</p>
+        </div>
+
+        <div class="years-nav" id="yearsNav">
+            <!-- Anos serão inseridos via JavaScript -->
+        </div>
+
+        <div class="content">
+            <div class="months-nav" id="monthsNav">
+                <!-- Meses serão inseridos via JavaScript -->
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Carregando peças...</p>
+            </div>
+
+            <div class="pieces-grid" id="piecesGrid">
+                <!-- Peças serão inseridas via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para visualização ampliada -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <img id="modalImage" src="" alt="Visualização ampliada">
+        </div>
+    </div>
+
+    <!-- Toast de notificação -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
