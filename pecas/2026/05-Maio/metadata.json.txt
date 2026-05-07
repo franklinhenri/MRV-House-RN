@@ -3,7 +3,7 @@
         {
             "title": "Feirão dia das Mães - Story",
             "description": "Arte para instagram",
-            "file": "Feirão das Mães - story.jpg"
+            "file": "FeiraodasMaes-story.jpg"
         },
 	{
             "title": "Feirão dia das Mães - Post",
